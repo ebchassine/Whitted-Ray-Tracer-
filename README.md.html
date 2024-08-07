@@ -1,0 +1,59 @@
+                    <meta charset="utf-8" emacsmode="-*- markdown -*">
+                            **README markdeep**
+
+Ethan Wong-Chassine 
+P02_Raytrace
+
+Images
+===============================================================================
+![P02_02_sphere](../output/P02_00_sphere.png)
+![P02_01_sphere_ambient](../output/P02_01_sphere_ambient.png)
+![P02_02_sphere_room](../output/P02_02_sphere_room.png)
+![P02_03_quad](../output/P02_03_quad.png)
+![P02_04_quad_room](../output/P02_04_quad_room.png)
+![P02_05_ball_on_plane](../output/P02_05_ball_on_plane.png)
+![P02_06_balls_on_plane](../output/P02_06_balls_on_plane.png)
+
+![P02_07_reflections](../output/P02_07_reflections.png)
+This part was exciting when it worked - I remember hearing about NVIDIA's RTX GPUs while still using an RX 580 a few years ago and thinking how complex they must be.
+(even though I still don't have an RTX GPU - I still use a 1080ti that was previously used for crypto mining).  All the demos that NVIDIA 
+had were photorealistic with interesting reflections.  
+
+![P02_08_antialiased](../output/P02_08_antialiased.png)
+Now I know how expensive anti-aliasing, especially in realtime.  This by far takes the longest to run 
+
+Electives
+===============================================================================
+
+I made changes to the math_3d.v and scene.v and created a few .json files in the scenes folder for this section.  
+![P02_09_ball_on_plane_light](../output/P02_09_ball_on_plane_light.png)
+This section was challenging, as I was unable to implement the lighting response correctly.  I followed the equation on the slides which 
+said Li = kl.  On line 248, I commented out the given equation from the slides in favor of the point light Li equation beacuse it 
+appeared to look better (a gradient on the edges of the light's reach rather than a 
+strict like like a boolean light ).  I did also add in an attribute to the gfx.scene.v section that sets point lights as default unless specified by the 
+json file like in P02_09_ball_on_plane_light. 
+
+![P02_09_triangle](../output/P02_09_triangle.png)
+Implementing this was a little difficult because there was not a large distinction between cross prod and dot prod in the equations.  Another difficulty was configuring the .json file framing 
+to manipulate the triangle shape.  It was very hard even using the quad shape coordinates 
+
+![P02_09_planar_circle](../output/P02_09_planar_circle.png)
+
+I tried to make a planar circle by changing the quad intersect sligtly (changing linf norm to l2 norm), however I ran into issues configuring the .json file.
+The intersect section is still in the surface-ray-intersect function. 
+
+![P02_09_cube](../output/P02_09_cube.png)
+I chose arbitrary scale values for each 'face' and then moved the camera by slightly in x, y, and z to give the impression that the cube had shifted.
+P02_09_cube
+Creative Artifact       
+===============================================================================
+![P02_10_quad_room_artifact](../output/P02_10_quad_room_artifact.png)
+For my creative artifact, I tried to simulate light from a sun on a solar system, and seeing the interactions between planets and their shadows.  
+For the purpose of simplicity, I designated a plane as the sun, and moved the point light to slightly above the sun.  It made the most sense to 
+locate the plane as the light source because if it was behind the planets, there would be shadows "on" space.  Some of the planets have offset z axis coordinates
+to show the varying shadows on their faces (ex the first and second planets from the sun are on different z axis and therefore have different coverage from 
+perspective of the camera).  This is also anti-aliased to make it look "better". 
+
+
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js?" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+
