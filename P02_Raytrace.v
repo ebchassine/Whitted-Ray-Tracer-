@@ -3,13 +3,6 @@ import os
 import math
 import gfx
 
-////////////////////////////////////////////////////////////////////////////////////////
-// Comment out lines in array below to prevent re-rendering every scene.
-// If you create a new scene file, add it to the list below.
-//
-// NOTE: **BEFORE** you submit your solution, uncomment all lines, so
-//       your code will render all the scenes!
-
 const (
     scene_filenames = [
         'P02_00_sphere',
@@ -29,10 +22,6 @@ const (
     ]
 )
 
-////////////////////////////////////////////////////////////////////////////////////////
-// module aliasing to make code a little easier to read
-// ex: replacing `gfx.Scene` with just `Scene`
-
 type Point     = gfx.Point
 type Vector    = gfx.Vector
 type Direction = gfx.Direction
@@ -46,7 +35,6 @@ type Surface      = gfx.Surface
 type Scene        = gfx.Scene
 
 ////////////////////////////////////////////////////////////////////////////////////////
-// functions to implement
 
 // Helper functions for point arithemtic, I made these during triangle-ray intersect which is why they are only used there
 fn dot_prod(a Point, b Point) f64{
