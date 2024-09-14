@@ -13,6 +13,7 @@ pub:
 
     distance f64 = math.inf(1)  // distance from ray origin to point of intersection
                                 // note: infinite distance means no hit; finite distance means hit!
+    texture_point Point2
 }
 
 

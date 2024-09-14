@@ -65,6 +65,8 @@ pub:
         y: direction_y
         z: direction_z
     }
+    focus f64 = 0.0
+    sensor_size f64 = 0.0
 }
 
 pub struct Sensor {
@@ -102,7 +104,12 @@ pub:
     shape    Shape = Shape.sphere
     radius   f64   = 1.0
     frame    Frame
+    endframe Frame  //Added for motion blur 
+    motion_blur bool
+    timeframe Frame
     material Material
+    texture string
+    texture_index int = -1 
 }
 
 pub struct Material {
@@ -111,6 +118,7 @@ pub:
     ks Color = black
     n  f64   = 10.0
     kr Color = black
+    texture_index int = -1
 }
 
 
