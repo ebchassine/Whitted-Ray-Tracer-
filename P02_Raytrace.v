@@ -161,7 +161,20 @@ fn intersect_ray_surface(surface Surface, ray Ray) Intersection {
         }
 
         intersection_point := ray.at(t)
-        intersection_normal := frame.o.vector_to(intersection_point).normalize() // vector
+        v1_temp := Vector{
+            x:b.x - a.x
+            y:b.y - a.y
+            z:b.z - a.z
+        }
+        v2_temp := Vector{
+            x:c.x - a.x
+            y:c.y - a.y
+            z:c.z - a.z
+        }
+
+        intersection_normal := v1_temp.cross(v2_temp)
+
+        frame.o.vector_to(intersection_point).normalize() // vector
         return gfx.Intersection{
             frame: gfx.frame_oz(intersection_point, intersection_normal.as_direction()) //check?
             surface: surface
@@ -238,8 +251,7 @@ fn irradiance(scene Scene, ray Ray) Color {
         mut li := Color{}
         if light.light_type == gfx.Light_Type.direction{
             l_hat = Direction{light.frame.o.x, light.frame.o.y, light.frame.o.z }
-            // li = light.kl
-            li = light.kl.scale(1/intersection.frame.o.distance_squared_to(light.frame.o)) // Color
+            li = light.kl // Color
         } else {
             l_hat = intersection.frame.o.direction_to(light.frame.o) // Direction
             li = light.kl.scale(1/intersection.frame.o.distance_squared_to(light.frame.o)) // Color
