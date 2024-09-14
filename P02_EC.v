@@ -465,8 +465,9 @@ fn main() {
     mut texture_array := []Image4{}
     for filename in texture_filenames{
         println('Rendering texture ${filename}...')
-        texture_array << gfx.load_png('textures/${filename}.png')
+        texture_array << gfx.load_png('P02_Raytrace/textures/${filename}.png')
     }
+    // Note that this has been adjusted from the original code because I used to store the texture images outside of P02 dir 
 
     for filename in scene_filenames {
         println('Rendering ${filename}...')
